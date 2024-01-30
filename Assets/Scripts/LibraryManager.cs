@@ -21,7 +21,7 @@ public class LibraryManager : MonoBehaviour
         AddBook("Faust", "Goethe", "978-0-7432-7356-5", 88);
     }
 
-    private void AddBook(string title, string author, string isbn, int copyCount)
+    public void AddBook(string title, string author, string isbn, int copyCount)
     {
         Library.AddBookToLibrary(title, author, isbn, copyCount);
         _UIManager.AddBookPanelToLibraryPopup(title, author, isbn, copyCount);
