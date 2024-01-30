@@ -4,19 +4,19 @@ public class Book
 {
     private class BookCopy
     {
-        bool isBorrowed;
-        string borrowDate;
+        private bool _isBorrowed;
+        private string _borrowDate;
     }
 
-    private string _title;
+    public string Title { get; private set; }
     private string _author;
-    private int _isbn;
+    private long _isbn;
     private int _copyCount;
     private List<BookCopy> _copies;
 
-    public Book(string title, string author, int isbn, int copyCount, int borrowedCopies)
+    public Book(string title, string author, long isbn, int copyCount)
     {
-        _title = title;
+        Title = title;
         _author = author;
         _isbn = isbn;
         _copyCount = copyCount;
