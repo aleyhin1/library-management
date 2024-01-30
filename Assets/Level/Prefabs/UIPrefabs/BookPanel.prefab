@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6744053716200533839}
   - component: {fileID: 238147259243052266}
   - component: {fileID: 6609929500832361158}
+  - component: {fileID: 3236807155248521416}
   m_Layer: 5
   m_Name: BookPanel
   m_TagString: Untagged
@@ -151,6 +152,22 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &3236807155248521416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3544273890978435547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97b2de3aa7cc34b40851f1c804182ac0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _titleText: {fileID: 2832697517359164378}
+  _authorText: {fileID: 7861608506492400881}
+  _ISBNText: {fileID: 3674360538849546723}
+  _inStockText: {fileID: 2950215228548395873}
 --- !u!1001 &1533665998122488619
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -289,6 +306,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 255353624351172754, guid: 75733bd17148b7b41be883dd55e40a17, type: 3}
   m_PrefabInstance: {fileID: 1533665998122488619}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7861608506492400881 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8670175102794770394, guid: 75733bd17148b7b41be883dd55e40a17, type: 3}
+  m_PrefabInstance: {fileID: 1533665998122488619}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5381613677811316281
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -422,6 +450,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75733bd17148b7b41be883dd55e40a17, type: 3}
+--- !u!114 &3674360538849546723 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8670175102794770394, guid: 75733bd17148b7b41be883dd55e40a17, type: 3}
+  m_PrefabInstance: {fileID: 5381613677811316281}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &5270451693817749163 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 255353624351172754, guid: 75733bd17148b7b41be883dd55e40a17, type: 3}
@@ -560,6 +599,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75733bd17148b7b41be883dd55e40a17, type: 3}
+--- !u!114 &2950215228548395873 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8670175102794770394, guid: 75733bd17148b7b41be883dd55e40a17, type: 3}
+  m_PrefabInstance: {fileID: 5810737874057270459}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &5992269702999112745 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 255353624351172754, guid: 75733bd17148b7b41be883dd55e40a17, type: 3}
@@ -698,6 +748,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75733bd17148b7b41be883dd55e40a17, type: 3}
+--- !u!114 &2832697517359164378 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8670175102794770394, guid: 75733bd17148b7b41be883dd55e40a17, type: 3}
+  m_PrefabInstance: {fileID: 6853745481820294144}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &6671616617695749266 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 255353624351172754, guid: 75733bd17148b7b41be883dd55e40a17, type: 3}

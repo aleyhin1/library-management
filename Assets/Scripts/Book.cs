@@ -10,11 +10,11 @@ public class Book
 
     public string Title { get; private set; }
     private string _author;
-    private long _isbn;
+    private string _isbn;
     private int _copyCount;
     private List<BookCopy> _copies;
 
-    public Book(string title, string author, long isbn, int copyCount)
+    public Book(string title, string author, string isbn, int copyCount)
     {
         Title = title;
         _author = author;
