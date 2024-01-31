@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class BookPanel : MonoBehaviour
 {
+    public string Title { get; private set; }
+    public string Author { get; private set; }
     [SerializeField] private TextMeshProUGUI _titleText;
     [SerializeField] private TextMeshProUGUI _authorText;
     [SerializeField] private TextMeshProUGUI _ISBNText;
@@ -16,5 +18,8 @@ public class BookPanel : MonoBehaviour
         _authorText.text = author;
         _ISBNText.text = isbn;
         _inStockText.text = instock.ToString();
+
+        Title = title;
+        Author = author;
     }
 }
