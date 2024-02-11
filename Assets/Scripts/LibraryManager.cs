@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class LibraryManager : MonoBehaviour
 {
+    public static List<Book> Books = new List<Book>();
     [SerializeField] private UIManager _UIManager;
 
     public void Start()
@@ -23,7 +26,19 @@ public class LibraryManager : MonoBehaviour
 
     public void AddBook(string title, string author, string isbn, int copyCount)
     {
-        Library.AddBookToLibrary(title, author, isbn, copyCount);
+        Book bookToAdd = new Book(title, author, isbn, copyCount);
+        Books.Add(bookToAdd);
         _UIManager.AddBookPanelToLibraryPopup(title, author, isbn, copyCount);
+    }
+
+    public void BorrowBook()
+    {
+        Book bookToBorrow = FindBookByISBN(UIManager.SelectedBookISBN);
+        bookToBorrow.Borrow();
+    }
+
+    private Book FindBookByISBN(string isbn)
+    {
+        return Books.Find(book => book.Isbn == isbn);
     }
 }
