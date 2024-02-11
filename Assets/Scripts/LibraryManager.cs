@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class LibraryManager : MonoBehaviour
 {
-    public static List<Book> Books = new List<Book>();
+    private List<Book> _books = new List<Book>();
     [SerializeField] private UIManager _UIManager;
 
     public void Start()
@@ -27,7 +27,7 @@ public class LibraryManager : MonoBehaviour
     public void AddBook(string title, string author, string isbn, int copyCount)
     {
         Book bookToAdd = new Book(title, author, isbn, copyCount);
-        Books.Add(bookToAdd);
+        _books.Add(bookToAdd);
         _UIManager.AddBookPanelToLibraryPopup(title, author, isbn, copyCount);
     }
 
@@ -39,6 +39,6 @@ public class LibraryManager : MonoBehaviour
 
     private Book FindBookByISBN(string isbn)
     {
-        return Books.Find(book => book.Isbn == isbn);
+        return _books.Find(book => book.Isbn == isbn);
     }
 }
