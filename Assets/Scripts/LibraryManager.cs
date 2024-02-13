@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class LibraryManager : MonoBehaviour
 {
-    public static double BorrowTime = 15;
+    public const double BORROW_TIME = 15;
     private List<Book> _books = new List<Book>();
     [SerializeField] private UIManager _UIManager;
 
@@ -17,26 +17,26 @@ public class LibraryManager : MonoBehaviour
 
     private void PopulateTheLibrary()
     {
-        AddBook("Crime and Punishment", "Dostoyevski", "978-0-330-25864-7", 50);
-        AddBook("The Three Musketeers", "Alexandre Dumas", "232-4-234-5942-1", 55);
-        AddBook("Sonnets", "William Shakespeare", "523-5-634-1234-5", 24);
-        AddBook("The Captain's Daughter", "Alexander Pushkin", "534-5-525-6712-3", 23);
-        AddBook("White Fang", "Jack London", "978-0-06-112008-4", 2);
-        AddBook("Faust", "Goethe", "978-0-7432-7356-5", 88);
+        AddBookToLibrary("Crime and Punishment", "Dostoyevski", "978-0-330-25864-7", 50);
+        AddBookToLibrary("The Three Musketeers", "Alexandre Dumas", "232-4-234-5942-1", 55);
+        AddBookToLibrary("Sonnets", "William Shakespeare", "523-5-634-1234-5", 24);
+        AddBookToLibrary("The Captain's Daughter", "Alexander Pushkin", "534-5-525-6712-3", 23);
+        AddBookToLibrary("White Fang", "Jack London", "978-0-06-112008-4", 2);
+        AddBookToLibrary("Faust", "Goethe", "978-0-7432-7356-5", 88);
     }
 
-    public void AddBook(string title, string author, string isbn, int copyCount)
+    public void AddBookToLibrary(string title, string author, string isbn, int copyCount)
     {
         Book bookToAdd = new Book(title, author, isbn, copyCount);
         _books.Add(bookToAdd);
-        _UIManager.AddBookPanelToLibraryPopup(title, author, isbn, copyCount);
+        _UIManager.AddBookToLibrary(title, author, isbn, copyCount);
     }
 
     public void BorrowBook()
     {
         Book bookToBorrow = FindBookByISBN(UIManager.SelectedBookISBN);
         bookToBorrow.Borrow();
-        _UIManager.AddBorrowedBookPanelToMyBooksPopup(bookToBorrow.Title, bookToBorrow.Author, bookToBorrow.Isbn,
+        _UIManager.AddBookToMyBooks(bookToBorrow.Title, bookToBorrow.Author, bookToBorrow.Isbn,
             bookToBorrow.BorrowDate.Value, bookToBorrow.DueDate.Value);
     }
 

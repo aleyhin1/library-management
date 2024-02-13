@@ -18,7 +18,7 @@ public class UIManager : MonoBehaviour
     private List<BookPanel> _bookPanels = new List<BookPanel>();
     private List<BorrowedBookPanel> _borrowedBookPanels = new List<BorrowedBookPanel>();
 
-    public void AddBookPanelToLibraryPopup(string title, string author, string isbn, int copyCount)
+    public void AddBookToLibrary(string title, string author, string isbn, int copyCount)
     {
         BookPanel bookPanel = Instantiate<BookPanel>(_bookPrefab, _libraryPopupContent);
         bookPanel.Init(title, author, isbn, copyCount);
@@ -28,7 +28,7 @@ public class UIManager : MonoBehaviour
         bookPanel.OnPanelSelected += OnBookPanelSelected;
     }
 
-    public void AddBorrowedBookPanelToMyBooksPopup(string title, string author, string isbn, DateTime borrowedTime, DateTime dueTime)
+    public void AddBookToMyBooks(string title, string author, string isbn, DateTime borrowedTime, DateTime dueTime)
     {
         BorrowedBookPanel borrowedBookPanel = Instantiate<BorrowedBookPanel>(_borrowedBookPrefab, _myBooksPopupContent);
         borrowedBookPanel.Init(title, author, isbn, borrowedTime, dueTime);
@@ -44,7 +44,7 @@ public class UIManager : MonoBehaviour
         Destroy(panelToRemove.gameObject);
     }
     
-    public void SearchByTitle(string title)
+    public void SearchByTitleInLibrary(string title)
     {
         SetActiveOnBookPanels(_bookPanels, false);
 
@@ -62,7 +62,7 @@ public class UIManager : MonoBehaviour
         SetActiveOnBorrowedBookPanels(borrowedBooksWanted, true);
     }
 
-    public void SearchByAuthor(string author)
+    public void SearchByAuthorInLibrary(string author)
     {
         SetActiveOnBookPanels(_bookPanels, false);
 

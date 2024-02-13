@@ -16,7 +16,7 @@ public class TransactionPopup : MonoBehaviour
         _authorField.text = author;
         _isbnField.text = isbn;
         _borrowDateField.text = DateTime.Now.ToLongDateString();
-        _dueDateField.text = DateTime.Now.AddDays(LibraryManager.BorrowTime).ToLongDateString();
+        _dueDateField.text = DateTime.Now.AddDays(LibraryManager.BORROW_TIME).ToLongDateString();
     }
 
     public void UpdatePopup(string title, string author, string isbn, DateTime borrowDate, DateTime dueDate)

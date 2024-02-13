@@ -21,7 +21,7 @@ public class Book
     public void Borrow()
     {
         BorrowDate = DateTime.Now;
-        DueDate = BorrowDate.Value.AddDays(LibraryManager.BorrowTime);
+        DueDate = BorrowDate.Value.AddDays(LibraryManager.BORROW_TIME);
         _copyCount--;
     }
 

@@ -18,6 +18,6 @@ public class RegisterBookPopup : MonoBehaviour
         string isbnInput = _isbnInputField.text;
         string inStockInput = _inStockInputField.text;
 
-        _libraryManager.AddBook(titleInput, authorInput, isbnInput, int.Parse(inStockInput));
+        _libraryManager.AddBookToLibrary(titleInput, authorInput, isbnInput, int.Parse(inStockInput));
     }
 }
