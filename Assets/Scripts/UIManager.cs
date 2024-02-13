@@ -53,6 +53,15 @@ public class UIManager : MonoBehaviour
         SetActiveOnBookPanels(booksWanted, true);
     }
 
+    public void SearchByTitleInMyBooks(string title)
+    {
+        SetActiveOnBorrowedBookPanels(_borrowedBookPanels, false);
+
+        var borrowedBooksWanted = _borrowedBookPanels.Where(x => x.Title.ToLower().Contains(title.ToLower()));
+
+        SetActiveOnBorrowedBookPanels(borrowedBooksWanted, true);
+    }
+
     public void SearchByAuthor(string author)
     {
         SetActiveOnBookPanels(_bookPanels, false);
@@ -60,6 +69,15 @@ public class UIManager : MonoBehaviour
         var booksWanted = _bookPanels.Where(x => x.Author.ToLower().Contains(author.ToLower()));
 
         SetActiveOnBookPanels(booksWanted, true);
+    }
+
+    public void SearchByAuthorInMyBooks(string author)
+    {
+        SetActiveOnBorrowedBookPanels(_borrowedBookPanels, false);
+
+        var booksWanted = _borrowedBookPanels.Where(x => x.Author.ToLower().Contains(author.ToLower()));
+
+        SetActiveOnBorrowedBookPanels(booksWanted, true);
     }
 
     public void OnBookPanelSelected(BookPanel selectedBook)
@@ -94,6 +112,14 @@ public class UIManager : MonoBehaviour
         foreach(BookPanel bookPanel in panelsToSet)
         {
             bookPanel.gameObject.SetActive(status);
+        }
+    }
+
+    private void SetActiveOnBorrowedBookPanels(IEnumerable<BorrowedBookPanel> panelsToSet, bool status)
+    {
+        foreach(BorrowedBookPanel borrowedBookPanel in panelsToSet)
+        {
+            borrowedBookPanel.gameObject.SetActive(status);
         }
     }
 
