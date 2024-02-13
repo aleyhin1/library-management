@@ -6,8 +6,8 @@ public class Book
     public string Title { get; private set; }
     public string Author { get; private set; }
     public string Isbn { get; private set; }
-    public DateTime BorrowDate { get; private set; }
-    public DateTime DueDate { get; private set; }
+    public DateTime? BorrowDate { get; private set; }
+    public DateTime? DueDate { get; private set; }
     private int _copyCount;
 
     public Book(string title, string author, string isbn, int copyCount)
@@ -21,7 +21,14 @@ public class Book
     public void Borrow()
     {
         BorrowDate = DateTime.Now;
-        DueDate = BorrowDate.AddDays(LibraryManager.BorrowTime);
+        DueDate = BorrowDate.Value.AddDays(LibraryManager.BorrowTime);
         _copyCount--;
+    }
+
+    public void Return()
+    {
+        BorrowDate = null;
+        DueDate = null;
+        _copyCount++;
     }
 }

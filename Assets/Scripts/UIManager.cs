@@ -16,6 +16,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private BookPanel _bookPrefab;
     [SerializeField] private BorrowedBookPanel _borrowedBookPrefab;
     private List<BookPanel> _bookPanels = new List<BookPanel>();
+    private List<BorrowedBookPanel> _borrowedBookPanels = new List<BorrowedBookPanel>();
 
     public void AddBookPanelToLibraryPopup(string title, string author, string isbn, int copyCount)
     {
@@ -31,8 +32,16 @@ public class UIManager : MonoBehaviour
     {
         BorrowedBookPanel borrowedBookPanel = Instantiate<BorrowedBookPanel>(_borrowedBookPrefab, _myBooksPopupContent);
         borrowedBookPanel.Init(title, author, isbn, borrowedTime, dueTime);
+        _borrowedBookPanels.Add(borrowedBookPanel);
 
         borrowedBookPanel.OnPanelSelected += OnBorrowedBookPanelSelected;
+    }
+
+    public void RemoveBorrowedBookPanel()
+    {
+        BorrowedBookPanel panelToRemove = FindBorrowedBookPanelByISBN(SelectedBookISBN);
+        _borrowedBookPanels.Remove(panelToRemove);
+        Destroy(panelToRemove.gameObject);
     }
     
     public void SearchByTitle(string title)
@@ -74,6 +83,12 @@ public class UIManager : MonoBehaviour
         SelectedBook.DecreaseInStock();
     }
 
+    public void IncreaseInStockOfSelectedBook()
+    {
+        BookPanel SelectedBook = FindBookPanelByISBN(SelectedBookISBN);
+        SelectedBook.IncreaseInStock();
+    }
+
     private void SetActiveOnBookPanels(IEnumerable<BookPanel> panelsToSet, bool status)
     {
         foreach(BookPanel bookPanel in panelsToSet)
@@ -85,5 +100,10 @@ public class UIManager : MonoBehaviour
     private BookPanel FindBookPanelByISBN(string isbn)
     {
         return _bookPanels.Find(bookPanel => bookPanel.ISBN == isbn);
+    }
+
+    private BorrowedBookPanel FindBorrowedBookPanelByISBN(string isbn)
+    {
+        return _borrowedBookPanels.Find(borrowedBookPanel => borrowedBookPanel.ISBN == isbn);
     }
 }

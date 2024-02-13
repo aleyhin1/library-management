@@ -32,6 +32,13 @@ public class BookPanel : MonoBehaviour
         _inStockText.text = inStockCount.ToString();
     }
 
+    public void IncreaseInStock()
+    {
+        int inStockCount = Int32.Parse(_inStockText.text);
+        inStockCount++;
+        _inStockText.text = inStockCount.ToString();
+    }
+
     public void SelectBook()
     {
         OnPanelSelected.Invoke(this);

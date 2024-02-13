@@ -37,7 +37,14 @@ public class LibraryManager : MonoBehaviour
         Book bookToBorrow = FindBookByISBN(UIManager.SelectedBookISBN);
         bookToBorrow.Borrow();
         _UIManager.AddBorrowedBookPanelToMyBooksPopup(bookToBorrow.Title, bookToBorrow.Author, bookToBorrow.Isbn,
-            bookToBorrow.BorrowDate, bookToBorrow.DueDate);
+            bookToBorrow.BorrowDate.Value, bookToBorrow.DueDate.Value);
+    }
+
+    public void ReturnBook()
+    {
+        Book bookToReturn = FindBookByISBN(UIManager.SelectedBookISBN);
+        bookToReturn.Return();
+        _UIManager.RemoveBorrowedBookPanel();
     }
 
     private Book FindBookByISBN(string isbn)
