@@ -10,6 +10,8 @@ public class BorrowedBookPanel : MonoBehaviour
     public string Title { get; private set; }
     public string Author { get; private set; }
     public string ISBN { get; private set; }
+    public DateTime BorrowedTime { get; private set; }
+    public DateTime DueTime { get; private set; }
     [SerializeField] private TextMeshProUGUI _titleText;
     [SerializeField] private TextMeshProUGUI _authorText;
     [SerializeField] private TextMeshProUGUI _ISBNText;
@@ -21,6 +23,8 @@ public class BorrowedBookPanel : MonoBehaviour
         Title = title;
         Author = author;
         ISBN = isbn;
+        BorrowedTime = borrowedTime;
+        DueTime = dueTime;
 
         _titleText.text = title;
         _authorText.text = author;

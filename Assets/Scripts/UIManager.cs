@@ -31,6 +31,8 @@ public class UIManager : MonoBehaviour
     {
         BorrowedBookPanel borrowedBookPanel = Instantiate<BorrowedBookPanel>(_borrowedBookPrefab, _myBooksPopupContent);
         borrowedBookPanel.Init(title, author, isbn, borrowedTime, dueTime);
+
+        borrowedBookPanel.OnPanelSelected += OnBorrowedBookPanelSelected;
     }
     
     public void SearchByTitle(string title)
@@ -61,6 +63,9 @@ public class UIManager : MonoBehaviour
     public void OnBorrowedBookPanelSelected(BorrowedBookPanel selectedBook)
     {
         SelectedBookISBN = selectedBook.ISBN;
+        _returnPopup.gameObject.SetActive(true);
+        _returnPopup.UpdatePopup(selectedBook.Title, selectedBook.Author, selectedBook.ISBN,
+            selectedBook.BorrowedTime, selectedBook.DueTime);
     }
 
     public void DecreaseInStockOfSelectedBook()
