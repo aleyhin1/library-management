@@ -8807,8 +8807,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _libraryPopupContent: {fileID: 287119846}
+  _myBooksPopupContent: {fileID: 2133818908}
   _borrowPopup: {fileID: 1673421954}
+  _returnPopup: {fileID: 556687958}
   _bookPrefab: {fileID: 3236807155248521416, guid: a4e5a3ba9ba64094fb1c17a2e8d685ee, type: 3}
+  _borrowedBookPrefab: {fileID: 8792202856882518816, guid: 5a0bfd5f7e6096e449d3b4b30ad1bf3b, type: 3}
 --- !u!1 &1317392879
 GameObject:
   m_ObjectHideFlags: 0

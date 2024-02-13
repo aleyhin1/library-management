@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class LibraryManager : MonoBehaviour
 {
+    public static double BorrowTime = 15;
     private List<Book> _books = new List<Book>();
     [SerializeField] private UIManager _UIManager;
 
@@ -35,6 +36,8 @@ public class LibraryManager : MonoBehaviour
     {
         Book bookToBorrow = FindBookByISBN(UIManager.SelectedBookISBN);
         bookToBorrow.Borrow();
+        _UIManager.AddBorrowedBookPanelToMyBooksPopup(bookToBorrow.Title, bookToBorrow.Author, bookToBorrow.Isbn,
+            bookToBorrow.BorrowDate, bookToBorrow.DueDate);
     }
 
     private Book FindBookByISBN(string isbn)

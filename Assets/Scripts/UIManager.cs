@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +10,11 @@ public class UIManager : MonoBehaviour
 {
     public static string SelectedBookISBN;
     [SerializeField] private RectTransform _libraryPopupContent;
-    [SerializeField] private BorrowPopup _borrowPopup;
+    [SerializeField] private RectTransform _myBooksPopupContent;
+    [SerializeField] private TransactionPopup _borrowPopup;
+    [SerializeField] private TransactionPopup _returnPopup;
     [SerializeField] private BookPanel _bookPrefab;
+    [SerializeField] private BorrowedBookPanel _borrowedBookPrefab;
     private List<BookPanel> _bookPanels = new List<BookPanel>();
 
     public void AddBookPanelToLibraryPopup(string title, string author, string isbn, int copyCount)
@@ -21,6 +25,12 @@ public class UIManager : MonoBehaviour
 
 
         bookPanel.OnPanelSelected += OnBookPanelSelected;
+    }
+
+    public void AddBorrowedBookPanelToMyBooksPopup(string title, string author, string isbn, DateTime borrowedTime, DateTime dueTime)
+    {
+        BorrowedBookPanel borrowedBookPanel = Instantiate<BorrowedBookPanel>(_borrowedBookPrefab, _myBooksPopupContent);
+        borrowedBookPanel.Init(title, author, isbn, borrowedTime, dueTime);
     }
     
     public void SearchByTitle(string title)
@@ -46,6 +56,11 @@ public class UIManager : MonoBehaviour
         SelectedBookISBN = selectedBook.ISBN;
         _borrowPopup.gameObject.SetActive(true);
         _borrowPopup.UpdatePopup(selectedBook.Title, selectedBook.Author, selectedBook.ISBN);
+    }
+
+    public void OnBorrowedBookPanelSelected(BorrowedBookPanel selectedBook)
+    {
+        SelectedBookISBN = selectedBook.ISBN;
     }
 
     public void DecreaseInStockOfSelectedBook()
