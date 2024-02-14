@@ -7,8 +7,8 @@ public class Book
     public string Title;
     public string Author;
     public string Isbn;
-    public string BorrowDate;
-    public string DueDate;
+    public string BorrowDate = string.Empty;
+    public string DueDate = string.Empty;
     public int CopyCount;
 
     public Book(string title, string author, string isbn, int copyCount)
@@ -38,8 +38,8 @@ public class Book
 
     public void Return()
     {
-        BorrowDate = null;
-        DueDate = null;
+        BorrowDate = string.Empty;
+        DueDate = string.Empty;
         CopyCount++;
     }
 }

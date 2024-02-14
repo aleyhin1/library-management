@@ -3271,6 +3271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b0751b64f734d94188052793c770838, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Books: []
   _UIManager: {fileID: 1237475218}
   _feedbackPopup: {fileID: 142574378}
 --- !u!1 &496028317
@@ -15696,6 +15697,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4894841806506336983, guid: a436bfe8091d4a74994f629b81492e4c, type: 3}
+      propertyPath: _libraryManager
+      value: 
+      objectReference: {fileID: 490618020}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
