@@ -1,34 +1,45 @@
 using System;
 using System.Collections.Generic;
 
+[Serializable]
 public class Book
 {
-    public string Title { get; private set; }
-    public string Author { get; private set; }
-    public string Isbn { get; private set; }
-    public DateTime? BorrowDate { get; private set; }
-    public DateTime? DueDate { get; private set; }
-    private int _copyCount;
+    public string Title;
+    public string Author;
+    public string Isbn;
+    public string BorrowDate;
+    public string DueDate;
+    public int CopyCount;
 
     public Book(string title, string author, string isbn, int copyCount)
     {
         Title = title;
         Author = author;
         Isbn = isbn;
-        _copyCount = copyCount;
+        CopyCount = copyCount;
     }
+
+    public Book(string title, string author, string isbn, int copyCount, string borrowDate, string dueDate)
+    {
+        Title = title;
+        Author = author;
+        Isbn = isbn;
+        BorrowDate = borrowDate;
+        DueDate = dueDate;
+        CopyCount = copyCount;
+    } 
 
     public void Borrow()
     {
-        BorrowDate = DateTime.Now;
-        DueDate = BorrowDate.Value.AddDays(LibraryManager.BORROW_TIME);
-        _copyCount--;
+        BorrowDate = DateTime.Now.ToString();
+        DueDate = DateTime.Now.AddDays(LibraryManager.BORROW_TIME).ToString();
+        CopyCount--;
     }
 
     public void Return()
     {
         BorrowDate = null;
         DueDate = null;
-        _copyCount++;
+        CopyCount++;
     }
 }

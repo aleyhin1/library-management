@@ -13,17 +13,12 @@ public class LibraryManager : MonoBehaviour
 
     public void Start()
     {   
-        PopulateTheLibrary();
+
     }
 
     private void PopulateTheLibrary()
     {
-        AddBookToLibrary("Crime and Punishment", "Dostoyevski", "9780330258647", 50);
-        AddBookToLibrary("The Three Musketeers", "Alexandre Dumas", "232423459421", 55);
-        AddBookToLibrary("Sonnets", "William Shakespeare", "523563412345", 24);
-        AddBookToLibrary("The Captain's Daughter", "Alexander Pushkin", "534552567123", 23);
-        AddBookToLibrary("White Fang", "Jack London", "978061120084", 2);
-        AddBookToLibrary("Faust", "Goethe", "9780743273565", 88);
+
     }
 
     public void AddBookToLibrary(string title, string author, string isbn, int copyCount)
@@ -45,7 +40,7 @@ public class LibraryManager : MonoBehaviour
         {
             bookToBorrow.Borrow();
             _UIManager.AddBookToMyBooks(bookToBorrow.Title, bookToBorrow.Author, bookToBorrow.Isbn,
-                bookToBorrow.BorrowDate.Value, bookToBorrow.DueDate.Value);
+                DateTime.Parse(bookToBorrow.BorrowDate), DateTime.Parse(bookToBorrow.DueDate));
             _UIManager.DecreaseInStockOfSelectedBook();
             _feedbackPopup.ThrowFeedback("You successfully borrowed the book. Enjoy!");
         }
