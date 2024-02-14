@@ -9,6 +9,7 @@ public class LibraryManager : MonoBehaviour
     public const double BORROW_TIME = 15;
     private List<Book> _books = new List<Book>();
     [SerializeField] private UIManager _UIManager;
+    [SerializeField] private FeedbackPopup _feedbackPopup;
 
     public void Start()
     {   
@@ -35,9 +36,20 @@ public class LibraryManager : MonoBehaviour
     public void BorrowBook()
     {
         Book bookToBorrow = FindBookByISBN(UIManager.SelectedBookISBN);
-        bookToBorrow.Borrow();
-        _UIManager.AddBookToMyBooks(bookToBorrow.Title, bookToBorrow.Author, bookToBorrow.Isbn,
-            bookToBorrow.BorrowDate.Value, bookToBorrow.DueDate.Value);
+
+        if (bookToBorrow.BorrowDate != null)
+        {
+            _feedbackPopup.ThrowFeedback("You already have this book...");
+        }
+        else
+        {
+            bookToBorrow.Borrow();
+            _UIManager.AddBookToMyBooks(bookToBorrow.Title, bookToBorrow.Author, bookToBorrow.Isbn,
+                bookToBorrow.BorrowDate.Value, bookToBorrow.DueDate.Value);
+            _UIManager.DecreaseInStockOfSelectedBook();
+            _feedbackPopup.ThrowFeedback("You successfully borrowed the book. Enjoy!");
+        }
+        
     }
 
     public void ReturnBook()
@@ -45,6 +57,7 @@ public class LibraryManager : MonoBehaviour
         Book bookToReturn = FindBookByISBN(UIManager.SelectedBookISBN);
         bookToReturn.Return();
         _UIManager.RemoveBorrowedBookPanel();
+        _feedbackPopup.ThrowFeedback("You successfully returned the book. Thanks!");
     }
 
     private Book FindBookByISBN(string isbn)
