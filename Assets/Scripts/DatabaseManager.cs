@@ -43,7 +43,7 @@ public class DatabaseManager : MonoBehaviour
         
 
         string jsonString = JsonUtility.ToJson(bookDatabase);
-        File.AppendAllText(_DATA_PATH, jsonString);
+        File.WriteAllText(_DATA_PATH, jsonString);
     }
 
     private List<Book> GetBooksOnDatabase()
@@ -68,5 +68,19 @@ public class DatabaseManager : MonoBehaviour
         Book bookToAdd = new Book(title, author, isbn, copyCount, borrowedDate.ToString(),
             borrowedDate.AddDays(LibraryManager.BORROW_TIME).ToString());
         bookDatabase.Books.Add(bookToAdd);
+    }
+
+    private void OnApplicationQuit()
+    {
+        SaveLibrary();
+    }
+
+    private void SaveLibrary()
+    {
+        BookDatabase bookDatabase = new BookDatabase();
+        bookDatabase.Books = _libraryManager.Books;
+
+        string jsonString = JsonUtility.ToJson(bookDatabase);
+        File.WriteAllText(_DATA_PATH, jsonString);
     }
 }
