@@ -52,6 +52,11 @@ public class RegisterBookPopup : MonoBehaviour
                 "Example: 4596387124968");
             CleanField(_isbnInputField);
         }
+        else if (_libraryManager.Books.Exists(book => book.Isbn == isbnInput))
+        {
+            _feedbackPopup.ThrowFeedback("ISBN must be unique!\nA book with the same ISBN is already exist in the library...");
+            CleanField(_isbnInputField);
+        }
         else if (!inStockInput.All(c => char.IsDigit(c)))
         {
             _feedbackPopup.ThrowFeedback("In Stock can only contain digits.\n" +
