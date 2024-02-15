@@ -182,6 +182,7 @@ MonoBehaviour:
   _ISBNText: {fileID: 3674360538849546723}
   _borrowedTimeText: {fileID: 2950215228548395873}
   _dueTimeText: {fileID: 7736738124929395299}
+  _image: {fileID: 6744053716200533839}
 --- !u!1001 &1372696306914938297
 PrefabInstance:
   m_ObjectHideFlags: 0

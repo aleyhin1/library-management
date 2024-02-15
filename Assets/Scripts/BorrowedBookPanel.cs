@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BorrowedBookPanel : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class BorrowedBookPanel : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _ISBNText;
     [SerializeField] private TextMeshProUGUI _borrowedTimeText;
     [SerializeField] private TextMeshProUGUI _dueTimeText;
+    [SerializeField] private Image _image;
 
     public void Init(string title, string author, string isbn, DateTime borrowedTime, DateTime dueTime)
     {
@@ -31,10 +33,20 @@ public class BorrowedBookPanel : MonoBehaviour
         _ISBNText.text = isbn;
         _borrowedTimeText.text = borrowedTime.ToLongDateString();
         _dueTimeText.text = dueTime.ToLongDateString();
+
+        DetermineOutOfDate(dueTime);
     }
 
     public void SelectBook()
     {
         OnPanelSelected.Invoke(this);
+    }
+
+    private void DetermineOutOfDate(DateTime dueTime)
+    {
+        if(DateTime.Now.CompareTo(dueTime) < 0)
+        {
+            _image.color = Color.red;
+        }
     }
 }
