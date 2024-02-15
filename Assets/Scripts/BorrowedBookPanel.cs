@@ -44,7 +44,7 @@ public class BorrowedBookPanel : MonoBehaviour
 
     private void DetermineOutOfDate(DateTime dueTime)
     {
-        if(DateTime.Now.CompareTo(dueTime) < 0)
+        if(DateTime.Now.CompareTo(dueTime) > 0)
         {
             _image.color = Color.red;
         }
